@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                        <a href="{{ route('questionnaire.create') }}" class="btn btn-dark">Create New Questionnaire</a>
                 </div>
             </div>
         </div>
