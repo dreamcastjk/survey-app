@@ -29,6 +29,7 @@ Route::name('questionnaire.')->prefix('questionnaires')->middleware(['auth'])->g
     Route::post('', [QuestionnaireController::class, 'store'])->name('store');
     Route::get('{questionnaire}', [QuestionnaireController::class, 'show'])->name('show');
     Route::post('{questionnaire}/questions', [QuestionController::class, 'store'])->name('questions.store');
+    Route::delete('{questionnaire}/questions/{question}', [QuestionController::class, 'destroy'])->name('questions.destroy');
     Route::get('{questionnaire}/questions/create', [QuestionController::class, 'create'])->name('questions.create');
 });
 
