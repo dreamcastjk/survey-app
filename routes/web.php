@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionnaireController;
+use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +31,10 @@ Route::name('questionnaire.')->prefix('questionnaires')->middleware(['auth'])->g
     Route::post('{questionnaire}/questions', [QuestionController::class, 'store'])->name('questions.store');
     Route::get('{questionnaire}/questions/create', [QuestionController::class, 'create'])->name('questions.create');
 });
+
+Route::name('survey.')->prefix('surveys')->group(function () {
+    Route::get('{questionnaire}-{slug}', [SurveyController::class, 'show'])->name('show');
+    Route::post('{questionnaire}-{slug}', [SurveyController::class, 'store'])->name('store');
+});
+
+
