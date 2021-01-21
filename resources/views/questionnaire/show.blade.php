@@ -21,7 +21,10 @@
                         <div class="card-body">
                             <ul class="list-group">
                                 @foreach($question->answers as $answer)
-                                    <li class="list-group-item">{{ $answer->answer }}</li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <div>{{ $answer->answer }}</div>
+                                        <div>{{ $answer->percentage }}%</div>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>

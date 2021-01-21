@@ -15,4 +15,14 @@ class Answer extends Model
     {
         return $this->belongsTo(Question::class);
     }
+
+    public function responses()
+    {
+        return $this->hasMany(SurveyResponse::class);
+    }
+
+    public function getPercentageAttribute()
+    {
+        return intval($this->responses()->count() * 100 / $this->question->responses()->count());
+    }
 }
