@@ -23,6 +23,10 @@ class Answer extends Model
 
     public function getPercentageAttribute()
     {
-        return intval($this->responses()->count() * 100 / $this->question->responses()->count());
+        if (!$questionResponses = $this->question->responses()->count()) {
+            return 0;
+        }
+
+        return intval($this->responses()->count() * 100 / $questionResponses);
     }
 }
